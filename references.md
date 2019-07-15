@@ -14,7 +14,7 @@
 * [畳込みニューラルネットワークの基本技術を比較する　ー音でもやってみたー](https://qiita.com/shinmura0/items/858214154f889c05e4f4#%E3%83%A1%E3%83%AB%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E5%8A%B9%E6%9E%9C)
 * [さぁ、始まる、本気の異音検知器](https://qiita.com/shinmura0/items/58cbda22d6bbf1842edd)
 * [「弱異常検知」と他の異常検知、違いはなにか？](https://qiita.com/shinmura0/items/1af83f5a5857d50cabc2)
-
+* [深層学習を使って楽曲のアーティスト分類をやってみた！](http://blog.brainpad.co.jp/entry/2018/04/17/143000)
 
 
 
