@@ -1,13 +1,20 @@
 # References
 
 
+## Dataset
 
-（深層）異常検知のサーベイのまとめ。
-
-結果の一覧は以下のリンクに，詳細はresult以下にまとめる。
+* [ESC-50: Dataset for Environmental Sound Classification](https://github.com/karoldvl/ESC-50)
 
 
-[サーベイ結果一覧](https://drive.google.com/open?id=1Qwbw53eV4ydwMfsRgFPoFpYpS3mvxCm5OJpxIMy2z78)
+
+
+## 実装
+
+* [ディープラーニングで音声分類](https://qiita.com/cvusk/items/61cdbce80785eaf28349#augmentation)
+* [畳込みニューラルネットワークの基本技術を比較する　ー音でもやってみたー](https://qiita.com/shinmura0/items/858214154f889c05e4f4#%E3%83%A1%E3%83%AB%E3%82%B9%E3%83%9A%E3%82%AF%E3%83%88%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E5%8A%B9%E6%9E%9C)
+* [さぁ、始まる、本気の異音検知器](https://qiita.com/shinmura0/items/58cbda22d6bbf1842edd)
+* [「弱異常検知」と他の異常検知、違いはなにか？](https://qiita.com/shinmura0/items/1af83f5a5857d50cabc2)
+
 
 
 

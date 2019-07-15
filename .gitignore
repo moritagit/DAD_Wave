@@ -4,7 +4,12 @@
 __pycache__
 .ipynb_checkpoints/
 
-results/*
 
 models/*
 !.gitkeep
+
+data/*
+!.gitkeep
+
+results/*
+
