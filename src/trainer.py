@@ -5,8 +5,14 @@ import torch
 import numpy as np
 
 
-def fit(train_loader, val_loader, model, loss_fn, optimizer, scheduler, n_epochs, cuda, log_interval, metrics=[],
-        start_epoch=0):
+def fit(
+        train_loader, val_loader,
+        model, loss_fn, optimizer, scheduler,
+        n_epochs, cuda, log_interval,
+        model_path=None,
+        metrics=[],
+        start_epoch=0,
+        ):
     """
     Loaders, model, loss function and metrics should work together for a given task,
     i.e. The model should be able to process data output of loaders,
@@ -18,6 +24,7 @@ def fit(train_loader, val_loader, model, loss_fn, optimizer, scheduler, n_epochs
     for epoch in range(0, start_epoch):
         scheduler.step()
 
+    val_loss_min = 1e8
     for epoch in range(start_epoch, n_epochs):
         scheduler.step()
 
@@ -36,6 +43,10 @@ def fit(train_loader, val_loader, model, loss_fn, optimizer, scheduler, n_epochs
             message += '\t{}: {}'.format(metric.name(), metric.value())
 
         print(message)
+        
+        if model_path and (val_loss < val_loss_min):
+            val_loss_min = val_loss
+            torch.save(model.state_dict(), str(model_path))
 
 
 def train_epoch(train_loader, model, loss_fn, optimizer, cuda, log_interval, metrics):
