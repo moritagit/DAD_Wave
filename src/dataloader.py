@@ -24,7 +24,7 @@ class ESC50Dataset(torch.utils.data.Dataset):
         self.labels = set()
         self.label2indices = {}
 
-        self.build()
+        self._build()
 
     def __len__(self):
         return len(self.metadata)
@@ -48,7 +48,7 @@ class ESC50Dataset(torch.utils.data.Dataset):
         label = self.metadata.at[index, 'target']
         return label
 
-    def build_label_data(self):
+    def _build_label_data(self):
         label_data = self.metadata.loc[:, ['target', 'category']].drop_duplicates()
         label_data = label_data.sort_values(by=['target'], ascending=True)
         label_data = label_data.reset_index(drop=True)
@@ -65,7 +65,7 @@ class ESC50Dataset(torch.utils.data.Dataset):
         self.label2indices = label2indices
         return label_data, label2indices
 
-    def build_spectrogram(self):
+    def _build_spectrogram(self):
         self.metadata['fname'] = ''
         for index in range(len(self.metadata)):
             audio_file_path = self.audio_dir/self.metadata.at[index, 'filename']
@@ -80,9 +80,9 @@ class ESC50Dataset(torch.utils.data.Dataset):
                 np.save(str(spec_file_path), spec)
         return
 
-    def build(self):
-        self.build_label_data()
-        self.build_spectrogram()
+    def _build(self):
+        self._build_label_data()
+        self._build_spectrogram()
 
 
 class ESC50DatasetTriplet(ESC50Dataset):
@@ -114,4 +114,4 @@ class ESC50DatasetTriplet(ESC50Dataset):
             spec_pos = self.transform(spec_pos)
             spec_neg = self.transform(spec_neg)
 
-        return (spec_anc, spec_anc, spec_neg), []
+        return (spec_anc, spec_pos, spec_neg), []

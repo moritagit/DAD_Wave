@@ -109,7 +109,9 @@ class EmbeddingNet(nn.Module):
         embedding = self.pooling(embedding)
         embedding = embedding.view(embedding.size()[0], -1)
         #embedding = self.fc(embedding)
-        #embedding /= embedding.pow(2).sum(1, keepdim=True).sqrt()  # normalize
+        
+        # normalize
+        embedding = embedding/embedding.pow(2).sum(1, keepdim=True).sqrt()
         return embedding
 
 
