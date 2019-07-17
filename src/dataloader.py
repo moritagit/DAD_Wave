@@ -85,6 +85,22 @@ class ESC50Dataset(torch.utils.data.Dataset):
         self._build_spectrogram()
 
 
+class ESC50DatasetTest(ESC50Dataset):
+    def __init__(self, metadata_path, audio_dir, spectrogram_dir, transform=None,):
+        super(ESC50DatasetTest, self).__init__(metadata_path, audio_dir, spectrogram_dir, transform)
+
+        self.embeddings = []
+
+    def __len__(self):
+        return len(self.metadata)
+
+    def __getitem__(self, index):
+        spec, label = self.load_spectrogram(index), self.load_label(index)
+        if self.transform is not None:
+            spec = self.transform(spec)
+        return spec, label
+
+
 class ESC50DatasetTriplet(ESC50Dataset):
     def __init__(self, metadata_path, audio_dir, spectrogram_dir, transform=None,):
         super(ESC50DatasetTriplet, self).__init__(metadata_path, audio_dir, spectrogram_dir, transform)
