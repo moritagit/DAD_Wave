@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import librosa.display
 
 
-def visualize_spectrogram(sp, fs, hop_length=128, mel=False):
+def visualize_spectrogram(sp, fs, hop_length=128, mel=False, path=None):
     # display wave in spectrogram
     if mel:
         y_axis = 'mel'
@@ -20,4 +20,6 @@ def visualize_spectrogram(sp, fs, hop_length=128, mel=False):
     librosa.display.specshow(sp, sr=fs, x_axis='time', y_axis=y_axis, hop_length=hop_length)
     plt.colorbar(format='%+2.0f dB')
     plt.title(title)
+    if path:
+        plt.savefig(str(path))
     plt.show()
